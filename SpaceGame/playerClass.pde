@@ -53,6 +53,22 @@ class Player
       amt.mult(speed);
     }
     pos.add(amt);
+    if(pos.x-size.x/2<=0)
+    {
+      pos.x=size.x/2;
+    }
+    if(pos.x+size.x/2>=width)
+    {
+      pos.x=width-size.x/2;
+    }
+    if(pos.y-size.y/2<=0)
+    {
+      pos.y=size.y/2;
+    }
+    if(pos.y+size.y/2>=height)
+    {
+      pos.y=height-size.y/2;
+    }
   }
   boolean shoot()
   {

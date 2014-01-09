@@ -1,5 +1,6 @@
 int phase = 3;
 Player p;
+ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 void setup()
 {
   size(800,800);
@@ -35,6 +36,20 @@ void play()
 {
   p.move();
   p.display();
+  if(mousePressed&&p.shoot())
+  {
+    PVector bmove = new PVector(mouseX,mouseY);
+    bmove.sub(p.pos);
+    bmove.normalize();
+    bmove.mult(10);
+    bullets.add(new Bullet(p.pos,bmove));
+  }
+  for(int i = bullets.size()-1;i>=0;i--)
+  {
+    Bullet b = bullets.get(i);
+    b.move();
+    b.display();
+  }
 }
 void store()
 {
