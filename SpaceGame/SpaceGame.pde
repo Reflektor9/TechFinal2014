@@ -4,6 +4,7 @@ PImage earth;
 PVector yspeed;
 int y = 525;
 PVector yacc;
+ArrayList<Particle> flame = new ArrayList<Particle>();
 
 void setup()
 {
@@ -59,6 +60,13 @@ void launch()
   image(rocket, width/2, y, 50, 100);
   y-= yspeed.y;
   yspeed.add(yacc);
+  
+  flame.add(new Particle(width/2,y)); 
+  for (int i = flame.size()-1; i >= 0; i--) {
+    Particle f = flame.get(i);
+    f.display();
+    f.move();
+  }
   
 }
 
