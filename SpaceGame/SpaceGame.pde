@@ -1,6 +1,17 @@
-int phase = 0;
+int phase = 2;
+PImage rocket;
+PImage earth;
+PVector yspeed;
+int y = 525;
+PVector yacc;
+
 void setup()
 {
+  size(800, 800);
+  rocket = loadImage("rocket1.png");
+  earth = loadImage("Earth1.png");
+  yspeed = new PVector(0,1);
+  yacc = new PVector(0,0.15);
   
 }
 void draw()
@@ -25,25 +36,29 @@ void draw()
   {
     store();
   }
-  
 }
 void play()
 {
-  
 }
 void store()
 {
-  
 }
 void menu()
 {
-  
 }
 void title()
 {
-  
 }
 void launch()
 {
+  //treat as if this section is void draw in order to display and send the rocket up, etc.
+  //if a certain boolean is true it'll go autmatically 
+  background(0);
+  imageMode(CENTER);
+  image(earth, width/2, height+200, 1250, 1000);
+  image(rocket, width/2, y, 50, 100);
+  y-= yspeed.y;
+  yspeed.add(yacc);
   
 }
+
