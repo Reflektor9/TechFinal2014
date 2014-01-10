@@ -3,7 +3,7 @@ Player p;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 void setup()
 {
-  size(800,800);
+  size(400,400);
   rectMode(CENTER);
   BlackBox.init(this);
   p = new Player(width/2,height/2);
@@ -36,13 +36,11 @@ void play()
 {
   p.move();
   p.display();
+  println(p.pos);
   if(mousePressed&&p.shoot())
   {
-    PVector bmove = new PVector(mouseX,mouseY);
-    bmove.sub(p.pos);
-    bmove.normalize();
-    bmove.mult(10);
-    bullets.add(new Bullet(p.pos,bmove));
+    PVector po = new PVector(p.pos.x,p.pos.y);
+    bullets.add(new Bullet(po));
   }
   for(int i = bullets.size()-1;i>=0;i--)
   {

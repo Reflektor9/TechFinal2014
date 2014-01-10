@@ -51,8 +51,8 @@ class Player
     {
       amt.normalize();
       amt.mult(speed);
+      pos.add(amt);
     }
-    pos.add(amt);
     if(pos.x-size.x/2<=0)
     {
       pos.x=size.x/2;
