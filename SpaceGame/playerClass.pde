@@ -79,4 +79,19 @@ class Player
     }
     return t;
   }
+  boolean enemyCol(Enemy e)
+  {
+    boolean t = false;
+    if(abs(pos.x-e.pos.x) <=(size.x+e.size.x)/2 && abs(pos.y-e.pos.y) <=(size.y+e.size.y)/2)
+    {
+      lives--;
+      t = true;
+    }
+    return t;
+  }
+  boolean checkLives()
+  {
+    boolean t = lives>0;
+    return t;
+  }
 }

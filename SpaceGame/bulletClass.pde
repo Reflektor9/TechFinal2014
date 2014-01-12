@@ -22,4 +22,9 @@ class Bullet
   {
     ellipse(pos.x,pos.y,size.x,size.y);
   }
+  boolean offScreen()
+  {
+    boolean off = (pos.x<-size.x||pos.y<-size.y||pos.x>width+size.x||pos.y>height+size.y);
+    return off;
+  }
 }
