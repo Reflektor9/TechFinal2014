@@ -17,6 +17,7 @@ ArrayList<Particle> flame = new ArrayList<Particle>();
 void setup()
 {
   size(800, 800);
+  //changing both alignment for text and rectangle
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
   //rocket image
@@ -66,16 +67,26 @@ void store()
 
 void menu()
 {
+
   background(0);
   textFont(BankGothic);
+
+
   textSize(200);
+  //MENU text displayed, white color
   text("MENU", width/2, height/4);
+  //fill text red
   fill(255, 0, 0);
+  //"button" for Launch
   rect(width/2, 2*height/3-60, width/2, height/6);
+  //
   fill(0, 0, 255);
+  //
   rect(width/2, 2*height/3+90, width/2, height/6);
+  //
   fill(255);
   textSize(100);
+  //
   text("Launch\nStore", width/2, 2*height/3);
 }
 
