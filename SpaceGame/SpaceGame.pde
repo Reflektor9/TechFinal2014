@@ -46,7 +46,7 @@ void draw()
 void play()
 {
   adelay = 1000/(starttime+1);
-  udelay = 5000*/(starttime+1);
+  udelay = 5000/(starttime+1);
   background(0);
   p.move();
   p.display();
