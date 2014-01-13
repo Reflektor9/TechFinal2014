@@ -1,9 +1,15 @@
 int phase = 2;
+//variable for rocket image
 PImage rocket;
+//variable for earth image
 PImage earth;
+//speed of the rocket
 PVector yspeed;
+//starting position for the rocket 
 int y = 525;
+//for the acceleration of the rocket
 PVector yacc;
+//declare array list for flames particles
 ArrayList<Particle> flame = new ArrayList<Particle>();
 
 
@@ -44,6 +50,7 @@ void draw()
 }
 void play()
 {
+  
 }
 void store()
 {
@@ -81,8 +88,8 @@ void launch()
       flame.remove(i);
     }
   }
-  if (y <= 0) {
-
+  if (y <= -555) {
+    phase++;
   }
 }
 

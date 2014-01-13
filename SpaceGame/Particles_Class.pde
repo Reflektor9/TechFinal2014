@@ -1,4 +1,5 @@
 class Particle {
+  //declare variable
   PVector loc, vel, acc, acc2;
   int k;
   int lifetime;
