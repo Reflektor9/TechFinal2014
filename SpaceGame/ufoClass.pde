@@ -7,12 +7,13 @@ class UFO extends Enemy
     pos = new PVector(x,y);
     vel = new PVector(vx,vy);
     size = new PVector(50,50);
-    health = 2;
+    health = 3;
     speed = 4;
     vel.normalize();
     vel.mult(speed);
     stime = 0;
     sdelay = 1000;
+    u = true;
   }
   @Override
   void display()

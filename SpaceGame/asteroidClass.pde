@@ -9,6 +9,7 @@ class Asteroid extends Enemy
     speed = 4;
     vel.normalize();
     vel.mult(speed);
+    u = false;
   }
   @Override
   void display()

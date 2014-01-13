@@ -30,6 +30,16 @@ class Bullet
   }
   void display()
   {
+    if(friendly)
+    {
+      stroke(255,0,0);
+      fill(0,255,0);
+    }
+    else
+    {
+      stroke(0,255,0);
+      fill(255,0,0);
+    }
     ellipse(pos.x,pos.y,size.x,size.y);
   }
   boolean offScreen()

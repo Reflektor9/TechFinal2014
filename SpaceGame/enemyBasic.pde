@@ -6,6 +6,7 @@ abstract class Enemy
   int health;
   float speed;
   PImage tex;
+  boolean u;
 
   abstract void display();
 

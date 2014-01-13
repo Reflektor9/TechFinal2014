@@ -16,7 +16,7 @@ void setup()
   p = new Player(width/2, height/2);
   adelay = 1000;
   atime = 0;
-  udelay = 2000;
+  udelay = 5000;
   utime = 0;
 }
 void draw()
@@ -90,8 +90,15 @@ void play()
     }
     if(!e.checkLive())
     {
+      if(e.u)
+      {
+        score += 20;
+      }
+      else
+      {
+        score += 10;
+      }
       enemies.remove(i);
-      score+=10;
     }
     else if(e.offScreen())
     {
