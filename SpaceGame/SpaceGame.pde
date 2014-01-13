@@ -71,12 +71,12 @@ void menu()
   textSize(200);
   text("MENU", width/2, height/4);
   fill(255, 0, 0);
-  rect(width/2, 2*height/3-60, width/2, height/6);
+  rect(width/2, 2*height/3-80, width/2, height/6);
   fill(0, 0, 255);
   rect(width/2, 2*height/3+90, width/2, height/6);
   fill(255);
   textSize(100);
-  text("Launch\nStore", width/2, 2*height/3);
+  text("Launch\n\n\nStore", width/2, 2*height/3);
 }
 
 void title()
@@ -127,3 +127,13 @@ void launch()
     phase = 3;
   }
 }
+
+void mousePressed() {
+  if (mouseX > height/4 && mouseX < 3*height/4 && mouseY > 7*height/12 - 80 && mouseY < 9*height/12 - 80) {
+    phase = 2;
+  }
+  if (mouseX > height/4 && mouseX < 3*height/4 && mouseY > 7*height/12 + 90 && mouseY < 9*height/12 + 90) {
+    phase = 4;
+  }
+}
+

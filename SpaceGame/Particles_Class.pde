@@ -41,7 +41,7 @@ class Particle {
     }
     //if the partciles still have less than 35 framecounts, they remain
     else {
-    return false;
+      return false;
     }
   }
 }
