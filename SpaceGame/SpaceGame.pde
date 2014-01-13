@@ -96,8 +96,9 @@ void play()
 }
 void store()
 {
+  background (255, 80, 80);
   rectMode (CORNER); 
-  fill (5, 190, 230);
+  fill (150, 190, 230);
   rect (15, height-400, width-30, 350);
   
   textSize (90);
@@ -109,8 +110,9 @@ void store()
    fill (15, 5, 220);
   text ("OID", 570, 100);
   rectMode (CENTER);
-  noFill();
+  fill (0);
   rect (670, 200, 160, 130);
+ fill (255, 80, 80);
   rect (670, 200, 140, 110);
    textAlign (CENTER);
   textSize (25);
