@@ -6,14 +6,14 @@ int y = 525;
 PVector yacc;
 ArrayList<Particle> flame = new ArrayList<Particle>();
 
+
 void setup()
 {
   size(800, 800);
   rocket = loadImage("rocket1.png");
   earth = loadImage("Earth1.png");
-  yspeed = new PVector(0,1);
-  yacc = new PVector(0,0.15);
-  
+  yspeed = new PVector(0, 0.75);
+  yacc = new PVector(0, 0.12);
 }
 void draw()
 {
@@ -60,13 +60,17 @@ void launch()
   image(rocket, width/2, y, 50, 100);
   y-= yspeed.y;
   yspeed.add(yacc);
-  
-  flame.add(new Particle(width/2,y)); 
+  flame.add(new Particle(width/2, y+50)); 
   for (int i = flame.size()-1; i >= 0; i--) {
     Particle f = flame.get(i);
     f.display();
     f.move();
+    if (f.fadeaway()) {
+      flame.remove(i);
+    }
   }
-  
+  if (y <= 0) {
+
+  }
 }
 
