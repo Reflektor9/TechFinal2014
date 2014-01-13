@@ -20,4 +20,4 @@ Basic enemy One created, main player can move around, and shoot as well with the
 
 PLAN - final touches on home screen/start screen (Alex) and rocket launch (Kathryn). Max will continue to work on the second enemy. Luke will test for bugs on what has been completed so far.
 
-WORK DONE - Second Enemy finished, Alex and Kathryn edited the font of start/menu screen. Rocket launch completed by Kathryn. Luke worked on the store graphics.
+WORK DONE - Second Enemy finished, Alex and Kathryn edited the font of start/menu screen. Rocket launch completed by Kathryn. Luke worked on the store graphics, and basic functions. There will be a window that displays a picture of space and if you click it it takes you back to the game
