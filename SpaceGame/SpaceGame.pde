@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-
-=======
 PFont BankGothic;
 PFont OCR;
->>>>>>> Added fonts
 int phase = 0;
-
 //variable for rocket image
 PImage rocket;
 //variable for earth image
@@ -19,14 +14,11 @@ PVector yacc;
 //declare array list for flames particles
 ArrayList<Particle> flame = new ArrayList<Particle>();
 
-
-
 void setup()
 {
   size(800, 800);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
-<<<<<<< HEAD
   //rocket image
   rocket = loadImage("rocket1.png");
   //earth image
@@ -35,10 +27,8 @@ void setup()
   yspeed = new PVector(0, 0.75);
   //so that the rocket will accelerate 
   yacc = new PVector(0, 0.12);
-=======
   BankGothic = loadFont("BankGothicBT-Light-200.vlw");
   OCR = loadFont("OCRAExtended-112.vlw");
->>>>>>> Added fonts
 }
 
 void draw()
@@ -76,7 +66,6 @@ void store()
 
 void menu()
 {
-
   background(0);
   textFont(BankGothic);
   textSize(200);
@@ -88,12 +77,10 @@ void menu()
   fill(255);
   textSize(100);
   text("Launch\nStore", width/2, 2*height/3);
-
 }
 
 void title()
 {
-
   fill(255);
   background(0);
   textFont(OCR);
@@ -107,7 +94,6 @@ void title()
   if (mousePressed) {
     phase = 1;
   }
-
 }
 
 void launch()
