@@ -5,11 +5,13 @@ abstract class Enemy
   PVector size;
   int health;
   float speed;
+  PImage tex;
 
   abstract void display();
 
   abstract void move();
   
+  abstract boolean shoot();
 
   boolean offScreen()
   {

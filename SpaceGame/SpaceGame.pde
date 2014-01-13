@@ -3,12 +3,14 @@ int maxNum = 20;
 Player p;
 int atime;
 int adelay;
+int utime;
+int udelay;
 int score = 0;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 void setup()
 {
-  size(displayHeight-100, displayHeight-100);
+  size(800, 800);
   rectMode(CENTER);
   BlackBox.init(this);
   p = new Player(width/2, height/2);

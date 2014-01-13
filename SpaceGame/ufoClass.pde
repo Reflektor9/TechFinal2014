@@ -1,6 +1,8 @@
-class Asteroid extends Enemy
+class UFO extends Enemy
 {
-  Asteroid(float x,float y, float vx,float vy)
+  int stime;
+  int sdelay;
+  UFO(float x,float y, float vx, float vy)
   {
     pos = new PVector(x,y);
     vel = new PVector(vx,vy);
@@ -9,6 +11,8 @@ class Asteroid extends Enemy
     speed = 4;
     vel.normalize();
     vel.mult(speed);
+    stime = 0;
+    sdelay = 1000;
   }
   @Override
   void display()
@@ -25,6 +29,11 @@ class Asteroid extends Enemy
   @Override
   boolean shoot()
   {
-    return false;
+    boolean t = millis()-stime>=sdelay;
+    if(t)
+    {
+      stime = millis();
+    }
+    return t;
   }
 }
