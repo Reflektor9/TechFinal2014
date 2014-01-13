@@ -1,4 +1,4 @@
-int phase = 3;
+int phase = 0;
 int maxNum = 20;
 Player p;
 int atime;
@@ -120,7 +120,6 @@ void store()
 }
 void menu()
 {
-  background(255,0,0);
 }
 void title()
 {
