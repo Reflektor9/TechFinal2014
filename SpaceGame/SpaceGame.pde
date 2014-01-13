@@ -1,4 +1,4 @@
-int phase = 3;
+int phase = 4;
 int maxNum = 20;
 Player p;
 int atime;
@@ -96,6 +96,30 @@ void play()
 }
 void store()
 {
+  rectMode (CORNER); 
+  fill (5, 190, 230);
+  rect (15, height-400, width-30, 350);
+  
+  textSize (90);
+ textAlign (CORNER);
+  fill (15, 5, 220);
+  text ("THE A", 20, 100);
+  fill (15, 5, 245);
+  text ("STORE", 285, 100);
+   fill (15, 5, 220);
+  text ("OID", 570, 100);
+  rectMode (CENTER);
+  noFill();
+  rect (670, 200, 160, 130);
+  rect (670, 200, 140, 110);
+   textAlign (CENTER);
+  textSize (25);
+  fill (0);
+  if (mouseX >= 600 && mouseX <= 740 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
+    phase = 3;
+  }
+  text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
+  
 }
 void menu()
 {
