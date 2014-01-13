@@ -6,4 +6,14 @@ The game will be a top down shooter where the player controls a spacehip with th
 *January 9th, 2014*
 PLAN - Alex will work on the start screen, including finding most to all graphics needs for the game. Luke and
 Kathryn will work on the launching rocket coding. Max is starting with the framework of the code.
-WHAT WAS DONE - 
+
+WHAT WAS DONE - Rocket Launch was just abuot finished, particles will be edited following class
+
+
+*Weekend of Friday the 10th*
+Basic enemy One created, main player can move around, and shoot as well with the mouse. Damage can be done to both players and enemies. Lives system established.
+
+*January 13th, 2014*
+PLAN - final touches on home screen/start screen (Alex) and rocket launch(Kathryn). Max will continue to work on the second enemy. Luke will test for bugs on what has been completed so far.
+
+WORK DONE - 
