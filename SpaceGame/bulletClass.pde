@@ -4,11 +4,21 @@ class Bullet
   PVector size;
   PVector mov;
   float speed = 10;
-  Bullet(PVector p)
+  boolean friendly;
+  Bullet(PVector p,boolean f)
   {
     pos = p;
     PVector m = new PVector(mouseX,mouseY);
     m.sub(p);
+    m.normalize();
+    m.mult(speed);
+    mov = m;
+    size = new PVector(5,5);
+    friendly = true;
+  }
+  Bullet(PVector p, boolean f, PVector m)
+  {
+    pos = p;
     m.normalize();
     m.mult(speed);
     mov = m;

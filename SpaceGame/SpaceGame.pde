@@ -16,6 +16,8 @@ void setup()
   p = new Player(width/2, height/2);
   adelay = 1000;
   atime = 0;
+  udelay = 2000;
+  utime = 0;
 }
 void draw()
 {
@@ -46,16 +48,21 @@ void play()
   p.move();
   p.display();
   asteroidSpawn();
+  ufoSpawn();
   if (mousePressed&&p.shoot())
   {
     PVector po = new PVector(p.pos.x, p.pos.y);
-    bullets.add(new Bullet(po));
+    bullets.add(new Bullet(po,true));
   }
   for (int i = bullets.size()-1;i>=0;i--)
   {
     Bullet b = bullets.get(i);
     b.move();
     b.display();
+    if(p.bulletCol(b))
+    {
+      bullets.remove(i);
+    }
     if(b.offScreen())
     {
       bullets.remove(i);
@@ -66,6 +73,13 @@ void play()
     Enemy e = enemies.get(i);
     e.move();
     e.display();
+    if(e.shoot())
+    {
+      PVector pos = new PVector(e.pos.x,e.pos.y);
+      PVector v = new PVector(p.pos.x,p.pos.y);
+      v.sub(pos);
+      bullets.add(new Bullet(pos,false,v));
+    }
     for (int j = bullets.size()-1;j>=0;j--)
     {
       Bullet b = bullets.get(j);
@@ -136,6 +150,38 @@ void asteroidSpawn()
       PVector astVel = new PVector(p.pos.x, p.pos.y);
       astVel.sub(astPos);
       enemies.add(new Asteroid(astPos.x, astPos.y, astVel.x, astVel.y));
+    }
+  }
+}
+void ufoSpawn()
+{
+  if (enemies.size() <20)
+  {
+    if (millis()-utime >= udelay)
+    {    
+      utime = millis();
+      PVector uPos;
+      uPos = new PVector(0, 0);
+      int side = int(random(0, 4));
+      if (side==0)
+      {
+        uPos= new PVector(-25, random(-25, height+25));
+      }
+      if (side==1)
+      {
+        uPos= new PVector(random(-25, width+25), -25);
+      }
+      if (side==2)
+      {
+        uPos= new PVector(width+25, random(-25, height+25));
+      }
+      if (side==3)
+      {
+        uPos= new PVector(random(-25, width+25), height + 25);
+      }
+      PVector uVel = new PVector(p.pos.x, p.pos.y);
+      uVel.sub(uPos);
+      enemies.add(new UFO(uPos.x, uPos.y, uVel.x, uVel.y));
     }
   }
 }

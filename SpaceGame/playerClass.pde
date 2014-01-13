@@ -94,4 +94,17 @@ class Player
     boolean t = lives>0;
     return t;
   }
+  boolean bulletCol(Bullet b)
+  {
+    boolean c = false;
+    if(!b.friendly)
+    {
+      if(abs(pos.x-b.pos.x) <=(size.x+b.size.x)/2 && abs(pos.y-b.pos.y) <=(size.y+b.size.y)/2)
+      {
+        lives--;
+        c = true;
+      }
+    }
+    return c;
+  }
 }

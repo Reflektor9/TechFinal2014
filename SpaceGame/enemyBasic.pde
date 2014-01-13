@@ -22,7 +22,7 @@ abstract class Enemy
   boolean bulletCol(Bullet b)
   {
     boolean t = false;
-    if(abs(pos.x-b.pos.x) <=(size.x+b.size.x)/2 && abs(pos.y-b.pos.y) <=(size.y+b.size.y)/2)
+    if(b.friendly&&abs(pos.x-b.pos.x) <=(size.x+b.size.x)/2 && abs(pos.y-b.pos.y) <=(size.y+b.size.y)/2)
     {
       health--;
       t = true;

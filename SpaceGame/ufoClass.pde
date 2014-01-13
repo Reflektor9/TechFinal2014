@@ -17,8 +17,8 @@ class UFO extends Enemy
   @Override
   void display()
   {
-    stroke(0,0,255);
-    fill(255,127.5,0);
+    stroke(255,127.5,0);
+    fill(0,0,255);
     rect(pos.x,pos.y,size.x,size.y);
   }
   @Override
