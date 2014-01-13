@@ -67,27 +67,28 @@ void store()
 
 void menu()
 {
-
+//black background
   background(0);
+  //different font
   textFont(BankGothic);
-
-
+  //menu text size
   textSize(200);
   //MENU text displayed, white color
   text("MENU", width/2, height/4);
   //fill text red
   fill(255, 0, 0);
   //"button" for Launch
-  rect(width/2, 2*height/3-60, width/2, height/6);
-  //
+  rect(width/2, 2*height/3-80, width/2, height/6);
+  //fill blue
   fill(0, 0, 255);
-  //
+  //"button" for Store
   rect(width/2, 2*height/3+90, width/2, height/6);
-  //
+  //fill white
   fill(255);
+  //text size
   textSize(100);
-  //
-  text("Launch\nStore", width/2, 2*height/3);
+  //text for buttons
+  text("Launch\n\n\nStore", width/2, 2*height/3);
 }
 
 void title()
