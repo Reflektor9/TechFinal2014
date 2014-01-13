@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 
+=======
+PFont BankGothic;
+PFont OCR;
+>>>>>>> Added fonts
 int phase = 0;
 
 //variable for rocket image
@@ -21,6 +26,7 @@ void setup()
   size(800, 800);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
+<<<<<<< HEAD
   //rocket image
   rocket = loadImage("rocket1.png");
   //earth image
@@ -29,6 +35,10 @@ void setup()
   yspeed = new PVector(0, 0.75);
   //so that the rocket will accelerate 
   yacc = new PVector(0, 0.12);
+=======
+  BankGothic = loadFont("BankGothicBT-Light-200.vlw");
+  OCR = loadFont("OCRAExtended-112.vlw");
+>>>>>>> Added fonts
 }
 
 void draw()
@@ -68,6 +78,7 @@ void menu()
 {
 
   background(0);
+  textFont(BankGothic);
   textSize(200);
   text("MENU", width/2, height/4);
   fill(255, 0, 0);
@@ -85,6 +96,7 @@ void title()
 
   fill(255);
   background(0);
+  textFont(OCR);
   textSize(112);
   text("SPACE GAME", width/2, height/3);
   fill(0, 255, 0);
@@ -129,4 +141,3 @@ void launch()
     phase = 3;
   }
 }
-
