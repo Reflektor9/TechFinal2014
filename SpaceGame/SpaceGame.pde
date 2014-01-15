@@ -1,4 +1,4 @@
-PFont BankGothic;
+hPFont BankGothic;
 PFont OCR;
 int phase = 0;
 //variable for rocket image
