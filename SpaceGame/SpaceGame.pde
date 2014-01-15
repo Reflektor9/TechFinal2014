@@ -8,12 +8,16 @@ int udelay;
 int score = 0;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+PImage spaceWindow;
+PImage merchant;
 void setup()
 {
   size(800, 800);
   rectMode(CENTER);
   BlackBox.init(this);
   p = new Player(width/2, height/2);
+  spaceWindow= loadImage ("spaceWindow.jpg");
+  merchant= loadImage ("ForthDoctorMerchantEdited.png");
   adelay = 1000;
   atime = 0;
 }
@@ -96,31 +100,39 @@ void play()
 }
 void store()
 {
+  
   background (255, 80, 80);
   rectMode (CORNER); 
   fill (150, 190, 230);
-  rect (15, height-400, width-30, 350);
-  
+  rect (30, height-400, width-30, 350);
+  //Display counter of store
   textSize (90);
  textAlign (CORNER);
   fill (15, 5, 220);
   text ("THE A", 20, 100);
-  fill (15, 5, 245);
+  fill (25, 15, 245);
   text ("STORE", 285, 100);
    fill (15, 5, 220);
   text ("OID", 570, 100);
+  //Text: "THE ASTOREOID".  The "STORE" portion is more brightly colored, emphasizing the wordplay
   rectMode (CENTER);
-  fill (0);
-  rect (670, 200, 160, 130);
- fill (255, 80, 80);
-  rect (670, 200, 140, 110);
+  fill (100, 70, 100);
+  rect (130, 200, 160, 130);
+  //window frame
+  imageMode (CENTER);
+  image (spaceWindow, 130, 200, 140, 110);
+  //window shows space outside, allowing you to return
+  image (merchant, 725, 264);
+  //Space merchant stands at the side
    textAlign (CENTER);
   textSize (25);
   fill (0);
-  if (mouseX >= 600 && mouseX <= 740 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
+  if (mouseX >= 60 && mouseX <= 200 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
     phase = 3;
   }
+  //clicking on the space window returns the player back to gameplay
   text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
+  //text explains the function of the store and how to use it
   
 }
 void menu()
