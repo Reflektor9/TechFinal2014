@@ -199,4 +199,12 @@ void ufoSpawn()
     }
   }
 }
+void reset()
+{
+  p = new Player(width/2, height/2);
+  adelay = 1000000;
+  atime = millis();
+  udelay = 5000000;
+  utime = millis();
+}
 
