@@ -309,7 +309,7 @@ void mousePressed() {
       phase = 1;
     }
   }
-  if (phase == 1) {
+  else if (phase == 1) {
     if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 7*height/12 - 80 && mouseY < 9*height/12 - 80) {
       phase = 2;
       y = 525;
