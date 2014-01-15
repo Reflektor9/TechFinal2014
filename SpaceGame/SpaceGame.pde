@@ -15,9 +15,9 @@ void setup()
   rectMode(CENTER);
   BlackBox.init(this);
   p = new Player(width/2, height/2);
-  adelay = 1000;
+  adelay = 1000000;
   atime = 0;
-  udelay = 5000;
+  udelay = 5000000;
   utime = 0;
 }
 void draw()
@@ -47,7 +47,7 @@ void play()
 {
 
   adelay = 1000000/(fnum);
-  udelay = 5000000/(fnum);
+  udelay = 5*adelay*int(abs(cos(fnum))+1);
   fnum++;
 
   background(0);
@@ -117,6 +117,8 @@ void play()
   }
   if(!p.checkLives())
   {
+    bullets.clear();
+    enemies.clear();
     phase = 1;
   }
   println(score);
