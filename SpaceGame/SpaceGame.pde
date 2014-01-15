@@ -93,15 +93,24 @@ void menu()
 
 void title()
 {
+  //fill white
   fill(255);
   background(0);
+  //text font for main screen (start screen)
   textFont(OCR);
+  //text size
   textSize(112);
+  //text for the start screen
   text("SPACE GAME", width/2, height/3);
+  //green fill for button
   fill(0, 255, 0);
+  //buttton fot play option
   rect(width/2, 2*height/3+15, width/2, height/4);
+  //fill whtie
   fill(255);
+  //text size
   textSize(100);
+  //text displayed for play! option
   text("Play!", width/2, 2*height/3);
 }
 
