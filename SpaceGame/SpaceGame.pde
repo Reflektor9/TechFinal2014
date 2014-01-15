@@ -12,7 +12,6 @@ PVector yacc;
 //declare array list for flames particles
 ArrayList<Particle> flame = new ArrayList<Particle>();
 
-
 void setup()
 {
   size(800, 800);
