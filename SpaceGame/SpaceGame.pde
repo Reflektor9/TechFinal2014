@@ -1,4 +1,4 @@
-int starttime = 0;
+int fnum = 1;
 int phase = 3;
 int maxNum = 20;
 Player p;
@@ -45,8 +45,9 @@ void draw()
 }
 void play()
 {
-  adelay = 1000/(starttime+1);
-  udelay = 5000*/(starttime+1);
+  adelay = 1000/(fnum);
+  udelay = 5000/(fnum);
+  fnum++;
   background(0);
   p.move();
   p.display();
