@@ -112,6 +112,10 @@ void title()
   textSize(100);
   //text displayed for play! option
   text("Play!", width/2, 2*height/3);
+  //once the mouse is clicked, the phase changes
+  if (mousePressed) {
+    phase = 1;
+  }
 }
 
 void launch()
@@ -145,20 +149,3 @@ void launch()
     phase = 3;
   }
 }
-
-void mousePressed() {
-  if (phase == 0) {
-    if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 13*height/24 + 15 && mouseY < 19*height/24 + 15) {
-      phase = 1;
-    }
-  }
-  if (phase == 1) {
-    if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 7*height/12 - 80 && mouseY < 9*height/12 - 80) {
-      phase = 2;
-    }
-    if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 7*height/12 + 90 && mouseY < 9*height/12 + 90) {
-      phase = 4;
-    }
-  }
-}
-
