@@ -45,10 +45,15 @@ void draw()
 }
 void play()
 {
+<<<<<<< HEAD
   adelay = 1000000/(fnum);
   udelay = 5000000/(fnum);
   fnum++;
 
+=======
+  adelay = 1000/(starttime+1);
+  udelay = 5000/(starttime+1);
+>>>>>>> 30b3f4540a7d1a2075bbcceff75a3e5625ad8453
   background(0);
   p.move();
   p.display();
