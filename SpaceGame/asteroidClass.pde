@@ -1,6 +1,6 @@
 class Asteroid extends Enemy
 {
-  Asteroid(float x,float y, float vx,float vy)
+  Asteroid(float x,float y, float vx,float vy,PImage t)
   {
     pos = new PVector(x,y);
     vel = new PVector(vx,vy);
@@ -10,13 +10,12 @@ class Asteroid extends Enemy
     vel.normalize();
     vel.mult(speed);
     u = false;
+    tex = t;
   }
   @Override
   void display()
   {
-    stroke(0,0,255);
-    fill(255,127.5,0);
-    rect(pos.x,pos.y,size.x,size.y);
+   image(tex,pos.x,pos.y,size.x,size.y);
   }
   @Override
   void move()

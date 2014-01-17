@@ -23,13 +23,15 @@ int y = 525;
 PVector yacc;
 //declare array list for flames particles
 ArrayList<Particle> flame = new ArrayList<Particle>();
+PImage astTex;
+PImage ufoTex;
 void setup()
 {
   size(800, 800);
   rectMode(CENTER);
   BlackBox.init(this);
   textAlign(CENTER, CENTER);
-  p = new Player(width/2, height/2);
+  p = new Player(width/2, height/2,rocket);
   adelay = 1000000;
   atime = 0;
   udelay = 5000000;
@@ -37,6 +39,8 @@ void setup()
    //rocket image
   rocket = loadImage("rocket1.png");
   //earth image
+  astTex = loadImage("asttex.png");
+  ufoTex = loadImage("ufotex.png");
   earth = loadImage("Earth1.png");
   //speed of rocket
   yspeed = new PVector(0, 0.75);
@@ -259,7 +263,7 @@ void asteroidSpawn()
       }
       PVector astVel = new PVector(p.pos.x, p.pos.y);
       astVel.sub(astPos);
-      enemies.add(new Asteroid(astPos.x, astPos.y, astVel.x, astVel.y));
+      enemies.add(new Asteroid(astPos.x, astPos.y, astVel.x, astVel.y,astTex));
     }
   }
 }
@@ -291,13 +295,13 @@ void ufoSpawn()
       }
       PVector uVel = new PVector(p.pos.x, p.pos.y);
       uVel.sub(uPos);
-      enemies.add(new UFO(uPos.x, uPos.y, uVel.x, uVel.y));
+      enemies.add(new UFO(uPos.x, uPos.y, uVel.x, uVel.y,ufoTex));
     }
   }
 }
 void reset()
 {
-  p = new Player(width/2, height/2);
+  p = new Player(width/2, height/2,rocket);
   adelay = 1000000;
   atime = millis();
   udelay = 5000000;
