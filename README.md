@@ -42,6 +42,6 @@ WORK DONE - Flowcharts all except Max's done. Merged branches.
 
 PLAN - Combine all flowcharts (Alex and Kathryn), use predefined processes (possibly), Upload final flowchart for due date. Max continues doing heavy coding, Luke working more on store.
 
-WHAT WAS DONE
+WHAT WAS DONE - Game Description and Progress report split into two files.Flowcharts finalized and uplaoded. Some graphics added into the game! :)
 
 
