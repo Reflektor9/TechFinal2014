@@ -16,7 +16,7 @@ class Player
     shotwait = 250;
     shottime = -shotwait;
     score = 0;
-    lives = 3;
+    lives = 5;
     tex = t;
   }
   void display()
