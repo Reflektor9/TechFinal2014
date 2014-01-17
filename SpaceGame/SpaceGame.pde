@@ -36,7 +36,7 @@ void setup()
   atime = 0;
   udelay = 5000000;
   utime = 0;
-   //rocket image
+  //rocket image
   rocket = loadImage("rocket1.png");
   //earth image
   earth = loadImage("Earth1.png");
@@ -92,18 +92,18 @@ void play()
   if (mousePressed&&p.shoot())
   {
     PVector po = new PVector(p.pos.x, p.pos.y);
-    bullets.add(new Bullet(po,true));
+    bullets.add(new Bullet(po, true));
   }
   for (int i = bullets.size()-1;i>=0;i--)
   {
     Bullet b = bullets.get(i);
     b.move();
     b.display();
-    if(p.bulletCol(b))
+    if (p.bulletCol(b))
     {
       bullets.remove(i);
     }
-    if(b.offScreen())
+    if (b.offScreen())
     {
       bullets.remove(i);
     }
@@ -113,24 +113,24 @@ void play()
     Enemy e = enemies.get(i);
     e.move();
     e.display();
-    if(e.shoot())
+    if (e.shoot())
     {
-      PVector pos = new PVector(e.pos.x,e.pos.y);
-      PVector v = new PVector(p.pos.x,p.pos.y);
+      PVector pos = new PVector(e.pos.x, e.pos.y);
+      PVector v = new PVector(p.pos.x, p.pos.y);
       v.sub(pos);
-      bullets.add(new Bullet(pos,false,v));
+      bullets.add(new Bullet(pos, false, v));
     }
     for (int j = bullets.size()-1;j>=0;j--)
     {
       Bullet b = bullets.get(j);
-      if(e.bulletCol(b))
+      if (e.bulletCol(b))
       {
         bullets.remove(j);
       }
     }
-    if(!e.checkLive())
+    if (!e.checkLive())
     {
-      if(e.u)
+      if (e.u)
       {
         score += 20;
       }
@@ -140,16 +140,16 @@ void play()
       }
       enemies.remove(i);
     }
-    else if(e.offScreen())
+    else if (e.offScreen())
     {
       enemies.remove(i);
     }
-    else if(p.enemyCol(e))
+    else if (p.enemyCol(e))
     {
       enemies.remove(i);
     }
   }
-  if(!p.checkLives())
+  if (!p.checkLives())
   {
     bullets.clear();
     enemies.clear();
@@ -166,12 +166,12 @@ void store()
   rect (30, height-400, width-30, 350);
   //Display counter of store
   textSize (80);
- textAlign (CORNER);
+  textAlign (CORNER);
   fill (15, 5, 210);
   text ("THE A", 34, 100);
   fill (25, 15, 255);
   text ("STORE", 285, 100);
-   fill (15, 5, 220);
+  fill (15, 5, 220);
   text ("OID", 576, 100);
   //Text: "THE ASTOREOID".  The "STORE" portion is more brightly colored, emphasizing the wordplay
   rectMode (CENTER);
@@ -183,21 +183,20 @@ void store()
   //window shows space outside, allowing you to return
   image (merchant, 725, 264);
   //Space merchant stands at the side
-   textAlign (CENTER);
+  textAlign (CENTER);
   fill (0);
-  if (mouseX >= 60 && mouseX <= 200 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
-    phase = 3;
-  }
+   if (mouseX >= 60 && mouseX <= 200 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
+     phase = 1;
+   }
   //clicking on the space window returns the player back to gameplay
   textSize (22);
   text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
   //text explains the function of the store and how to use it
-  
 }
 
 void menu()
 {
-//black background
+  //black background
   background(0);
   //different font
   textFont(BankGothic);
@@ -351,12 +350,12 @@ void mousePressed() {
       phase = 2;
       y = 525;
       flame.clear();
-      yspeed = new PVector(0,0);
-      
+      yspeed = new PVector(0, 0);
     }
     if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 7*height/12 + 90 && mouseY < 9*height/12 + 90) {
       phase = 4;
     }
   }
-}
+  }
+
 
