@@ -277,15 +277,15 @@ void ufoSpawn()
       {
         uPos= new PVector(-25, random(-25, height+25));
       }
-      if (side==1)
+      else if (side==1)
       {
         uPos= new PVector(random(-25, width+25), -25);
       }
-      if (side==2)
+      else if (side==2)
       {
         uPos= new PVector(width+25, random(-25, height+25));
       }
-      if (side==3)
+      else
       {
         uPos= new PVector(random(-25, width+25), height + 25);
       }
