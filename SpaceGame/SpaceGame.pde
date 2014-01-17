@@ -11,7 +11,6 @@ ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 PFont BankGothic;
 PFont OCR;
-int phase = 0;
 //variable for rocket image
 PImage rocket;
 //variable for earth image
@@ -166,14 +165,14 @@ void store()
   fill (150, 190, 230);
   rect (30, height-400, width-30, 350);
   //Display counter of store
-  textSize (90);
+  textSize (80);
  textAlign (CORNER);
   fill (15, 5, 210);
-  text ("THE A", 20, 100);
+  text ("THE A", 34, 100);
   fill (25, 15, 255);
   text ("STORE", 285, 100);
    fill (15, 5, 220);
-  text ("OID", 570, 100);
+  text ("OID", 576, 100);
   //Text: "THE ASTOREOID".  The "STORE" portion is more brightly colored, emphasizing the wordplay
   rectMode (CENTER);
   fill (100, 70, 100);
@@ -185,12 +184,12 @@ void store()
   image (merchant, 725, 264);
   //Space merchant stands at the side
    textAlign (CENTER);
-  textSize (25);
   fill (0);
   if (mouseX >= 60 && mouseX <= 200 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
     phase = 3;
   }
   //clicking on the space window returns the player back to gameplay
+  textSize (22);
   text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
   //text explains the function of the store and how to use it
   
