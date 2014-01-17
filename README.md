@@ -34,6 +34,14 @@ WORK DONE - Second Enemy finished, Alex and Kathryn edited the font of start/men
 
 *January 15th, 2014*
 
-PLAN - Work on Flowcharts. Max on his part of the game, Luke on the stor, Alex on the Home/Start Screen, and Kathryn on the Rockt Luanch with particles
+PLAN - Work on Flowcharts. Max on his part of the game, Luke on the store, Alex on the Home/Start Screen, and Kathryn on the Rocket Luanch with particles
 
-WORK DONE - 
+WORK DONE - Flowcharts all except Max's done. Merged branches.
+
+*January 17th, 2014*
+
+PLAN - Combine all flowcharts (Alex and Kathryn), use predefined processes (possibly), Upload final flowchart for due date. Max continues doing heavy coding, Luke working more on store.
+
+WHAT WAS DONE
+
+
