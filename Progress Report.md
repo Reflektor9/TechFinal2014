@@ -3,8 +3,11 @@
 
 *Jobs*
 Kathryn - UI and Project Manager
+
 Luke - Bug Fixer
+
 Max - Code Monkey
+
 Alex - UI and Graphics
 
 
