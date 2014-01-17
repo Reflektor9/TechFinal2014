@@ -245,15 +245,15 @@ void asteroidSpawn()
       {
         astPos= new PVector(-25, random(-25, height+25));
       }
-      if (side==1)
+      else if (side==1)
       {
         astPos= new PVector(random(-25, width+25), -25);
       }
-      if (side==2)
+      else if (side==2)
       {
         astPos= new PVector(width+25, random(-25, height+25));
       }
-      if (side==3)
+      else
       {
         astPos= new PVector(random(-25, width+25), height + 25);
       }
