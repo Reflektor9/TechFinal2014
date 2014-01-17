@@ -108,9 +108,9 @@ void store()
   //Display counter of store
   textSize (90);
  textAlign (CORNER);
-  fill (15, 5, 220);
+  fill (15, 5, 210);
   text ("THE A", 20, 100);
-  fill (25, 15, 245);
+  fill (25, 15, 255);
   text ("STORE", 285, 100);
    fill (15, 5, 220);
   text ("OID", 570, 100);
