@@ -8,6 +8,7 @@ int udelay;
 int score = 0;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
 PFont BankGothic;
 PFont OCR;
 int phase = 0;
@@ -121,6 +122,31 @@ void play()
       bullets.remove(i);
     }
   }
+  for(int i = powerups.size()-1;i>=0;i--)
+  {
+    PowerUp pu = powerups.get(i);
+    pu.display();
+    if(pu.playerCol(p))
+    {
+      if (pu.type == 0)
+      {
+        p.lives = 5;
+      }
+      else if (pu.type == 1)
+      {
+        p.shield = true;
+      }
+      else if (pu.type == 2)
+      {
+        missiles++;
+      }
+      else
+      {
+        bombs++;
+      }
+      powerups.remove(i);
+    }
+  }
   for (int i = enemies.size()-1;i>=0;i--)
   {
     Enemy e = enemies.get(i);
@@ -150,6 +176,11 @@ void play()
       else
       {
         score += 10;
+      }
+      int rand = int(random(40));
+      if (rand <4)
+      {
+        powerups.add(new PowerUp(e.pos,rand));
       }
       enemies.remove(i);
     }
