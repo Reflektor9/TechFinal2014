@@ -197,6 +197,7 @@ void play()
   {
     bullets.clear();
     enemies.clear();
+    powerups.clear();
     phase = 1;
   }
   println(score);
