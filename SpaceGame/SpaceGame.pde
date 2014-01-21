@@ -25,6 +25,9 @@ PVector yacc;
 ArrayList<Particle> flame = new ArrayList<Particle>();
 PImage astTex;
 PImage ufoTex;
+boolean spacePressed = false;
+int missiles;
+int bombs;
 void setup()
 {
   size(800, 800);
@@ -48,9 +51,9 @@ void setup()
   yacc = new PVector(0, 0.12);
   BankGothic = loadFont("BankGothicBT-Light-200.vlw");
   OCR = loadFont("OCRAExtended-112.vlw");
-
+  bombs = 0;
+  missiles = 0;
 }
-
 void draw()
 {  
   println(millis());
@@ -91,7 +94,18 @@ void play()
   if (mousePressed&&p.shoot())
   {
     PVector po = new PVector(p.pos.x, p.pos.y);
-    bullets.add(new Bullet(po,true));
+    boolean m = false;
+    if(mouseButton==RIGHT && missiles >0)
+    {
+      m = true;
+      missiles--;
+    }
+    bullets.add(new Bullet(po,true,m));
+  }
+  if(BlackBox.isKeyDown(BlackBox.VK_SPACE) && !spacePressed && bombs>0)
+  {
+    enemies.clear();
+    bombs--;
   }
   for (int i = bullets.size()-1;i>=0;i--)
   {
@@ -155,12 +169,12 @@ void play()
     phase = 1;
   }
   println(score);
+  spacePressed = BlackBox.isKeyDown(BlackBox.VK_SPACE);
 }
-
 void store()
 {
+  
 }
-
 void menu()
 {
 
