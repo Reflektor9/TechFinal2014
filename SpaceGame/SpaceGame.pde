@@ -32,6 +32,8 @@ PImage ufoTex;
 boolean spacePressed = false;
 int missiles;
 int bombs;
+PImage bulletTex;
+PImage[] powerTex;
 void setup()
 {
   size(800, 800);
@@ -49,6 +51,9 @@ void setup()
   astTex = loadImage("asttex.png");
   ufoTex = loadImage("ufotex.png");
   earth = loadImage("Earth1.png");
+  bulletTex = loadImage("bullet.png");
+  powerTex = new PImage[4];
+  powerTex[0] = loadImage("heart.png");
   //speed of rocket
   yspeed = new PVector(0, 0.75);
   //so that the rocket will accelerate 
@@ -243,6 +248,7 @@ void store()
   textSize (22);
   text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
   //text explains the function of the store and how to use it
+  
 
 }
 void menu()
