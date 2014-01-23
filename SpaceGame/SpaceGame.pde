@@ -181,11 +181,12 @@ void play()
         p.shield = true;
       }
       else if (pu.type == 2)
-      {
+      {//increasing number of missiles
         missiles++;
       }
       else
       {
+        //increasing number of bombs
         bombs++;
       }
       powerups.remove(i);
