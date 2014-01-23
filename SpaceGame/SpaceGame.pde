@@ -40,11 +40,16 @@ int y = 525;
 PVector yacc;
 //declare array list for flames particles
 ArrayList<Particle> flame = new ArrayList<Particle>();
-//image for space window in store
+
+//Image for return icon
 PImage spaceWindow;
-//image for the merchant 
+//Sotre merchant
 PImage merchant;
-//image for the asteroid texture
+// Bomb Image
+PImage bombPic;
+//Image of Missile
+PImage missilePic;
+
 PImage astTex;
 //image for the ufo texture
 PImage ufoTex;
@@ -90,8 +95,14 @@ void setup()
   yacc = new PVector(0, 0.12);
   BankGothic = loadFont("BankGothicBT-Light-200.vlw");
   OCR = loadFont("OCRAExtended-112.vlw");
+  //return icon image
   spaceWindow= loadImage ("spaceWindow.jpg");
+  //merchant image
   merchant= loadImage ("ForthDoctorMerchantEdited.png");
+  //bomb picture
+  bombPic= loadImage ("bomb.png");
+  //Missile picture
+  missilePic= loadImage ("spaceMissile.png");
   bombs = 0;
   missiles = 0;
 }
@@ -252,27 +263,27 @@ void play()
   spacePressed = BlackBox.isKeyDown(BlackBox.VK_SPACE);
 }
 void store()
-{
-
+{textSize (100);
   background (255, 80, 80);
+  fill (0, 150, 0);
+  text (money, width/2, 200);
+  textSize (32);
   rectMode (CORNER); 
   fill (150, 190, 230);
     //Display counter of store
   rect (30, height-400, width-30, 350);
   //Missle purchaser
-  fill(0);
-  rect (80, 450, 150, 150);
-  if (mouseX >= 80 && mouseX <= 230 && mouseY >= 450 && mouseY <= 600 && mousePressed) {
-   missiles++;
-   money-= 50;
-  }
+  image (missilePic, 220, 550, 240, 200);
+   fill(0);
+  rect (150, 635, 80, 50);
+  fill (0, 150, 0);
+   text ("$50", 190, 670);
    //Bomb purchaser
   fill(0);
-  rect (380, 450, 150, 150);
-  if (mouseX >= 380 && mouseX <= 530 && mouseY >= 450 && mouseY <= 600 && mousePressed) {
-   bombs++;
-   money-= 50;
-  }
+  image (bombPic, 500, 550, 240, 200);
+  rect (455, 635, 100, 50);
+  fill (0, 150, 0);
+  text ("$100", 505, 670);
   textSize (80);
   textAlign (CORNER);
   fill (15, 5, 210);
@@ -470,5 +481,16 @@ void mousePressed() {
       phase = 4;
     }
   }
-}
+  else if (phase == 4) {
+    if (mouseX >= 150 && mouseX <= 230 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 50) {
+   missiles++;
+   money-= 50;
+  }
+   if (mouseX >= 455 && mouseX <= 555 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 100) {
+   bombs++;
+   money-= 100;
+  }
+  }
+  
+  }
 
