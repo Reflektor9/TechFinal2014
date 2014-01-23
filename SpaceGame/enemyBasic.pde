@@ -27,6 +27,10 @@ abstract class Enemy
     {
       health--;
       t = true;
+      if(b.miss)
+      {
+        health =0;
+      }
     }
     return t;
   }

@@ -9,6 +9,7 @@ int udelay;
 int score = 0;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
 PFont BankGothic;
 PFont OCR;
 //variable for rocket image
@@ -25,13 +26,18 @@ PVector yacc;
 ArrayList<Particle> flame = new ArrayList<Particle>();
 PImage spaceWindow;
 PImage merchant;
+PImage astTex;
+PImage ufoTex;
+boolean spacePressed = false;
+int missiles;
+int bombs;
 void setup()
 {
   size(800, 800);
   rectMode(CENTER);
   BlackBox.init(this);
   textAlign(CENTER, CENTER);
-  p = new Player(width/2, height/2);
+  p = new Player(width/2, height/2,rocket);
   adelay = 1000000;
   atime = 0;
   udelay = 5000000;
@@ -39,6 +45,8 @@ void setup()
   //rocket image
   rocket = loadImage("rocket1.png");
   //earth image
+  astTex = loadImage("asttex.png");
+  ufoTex = loadImage("ufotex.png");
   earth = loadImage("Earth1.png");
   //speed of rocket
   yspeed = new PVector(0, 0.75);
@@ -46,12 +54,11 @@ void setup()
   yacc = new PVector(0, 0.12);
   BankGothic = loadFont("BankGothicBT-Light-200.vlw");
   OCR = loadFont("OCRAExtended-112.vlw");
-  p = new Player(width/2, height/2);
   spaceWindow= loadImage ("spaceWindow.jpg");
   merchant= loadImage ("ForthDoctorMerchantEdited.png");
-  atime = 0;
+  bombs = 0;
+  missiles = 0;
 }
-
 void draw()
 {  
   println(millis());
@@ -92,7 +99,18 @@ void play()
   if (mousePressed&&p.shoot())
   {
     PVector po = new PVector(p.pos.x, p.pos.y);
-    bullets.add(new Bullet(po, true));
+    boolean m = false;
+    if(mouseButton==RIGHT && missiles >0)
+    {
+      m = true;
+      missiles--;
+    }
+    bullets.add(new Bullet(po,true,m));
+  }
+  if(BlackBox.isKeyDown(BlackBox.VK_SPACE) && !spacePressed && bombs>0)
+  {
+    enemies.clear();
+    bombs--;
   }
   for (int i = bullets.size()-1;i>=0;i--)
   {
@@ -106,6 +124,31 @@ void play()
     if (b.offScreen())
     {
       bullets.remove(i);
+    }
+  }
+  for(int i = powerups.size()-1;i>=0;i--)
+  {
+    PowerUp pu = powerups.get(i);
+    pu.display();
+    if(pu.playerCol(p))
+    {
+      if (pu.type == 0)
+      {
+        p.lives = 5;
+      }
+      else if (pu.type == 1)
+      {
+        p.shield = true;
+      }
+      else if (pu.type == 2)
+      {
+        missiles++;
+      }
+      else
+      {
+        bombs++;
+      }
+      powerups.remove(i);
     }
   }
   for (int i = enemies.size()-1;i>=0;i--)
@@ -138,6 +181,11 @@ void play()
       {
         score += 10;
       }
+      int rand = int(random(40));
+      if (rand <4)
+      {
+        powerups.add(new PowerUp(e.pos,rand));
+      }
       enemies.remove(i);
     }
     else if (e.offScreen())
@@ -153,13 +201,15 @@ void play()
   {
     bullets.clear();
     enemies.clear();
+    powerups.clear();
     phase = 1;
   }
   println(score);
+  spacePressed = BlackBox.isKeyDown(BlackBox.VK_SPACE);
 }
-
 void store()
 {
+
   background (255, 80, 80);
   rectMode (CORNER); 
   fill (150, 190, 230);
@@ -192,8 +242,8 @@ void store()
   textSize (22);
   text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
   //text explains the function of the store and how to use it
-}
 
+}
 void menu()
 {
   //black background
@@ -295,7 +345,7 @@ void asteroidSpawn()
       }
       PVector astVel = new PVector(p.pos.x, p.pos.y);
       astVel.sub(astPos);
-      enemies.add(new Asteroid(astPos.x, astPos.y, astVel.x, astVel.y));
+      enemies.add(new Asteroid(astPos.x, astPos.y, astVel.x, astVel.y,astTex));
     }
   }
 }
@@ -327,13 +377,13 @@ void ufoSpawn()
       }
       PVector uVel = new PVector(p.pos.x, p.pos.y);
       uVel.sub(uPos);
-      enemies.add(new UFO(uPos.x, uPos.y, uVel.x, uVel.y));
+      enemies.add(new UFO(uPos.x, uPos.y, uVel.x, uVel.y,ufoTex));
     }
   }
 }
 void reset()
 {
-  p = new Player(width/2, height/2);
+  p = new Player(width/2, height/2,rocket);
   adelay = 1000000;
   atime = millis();
   udelay = 5000000;
@@ -356,6 +406,6 @@ void mousePressed() {
       phase = 4;
     }
   }
-  }
+}
 
 

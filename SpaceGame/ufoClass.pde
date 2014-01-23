@@ -2,7 +2,7 @@ class UFO extends Enemy
 {
   int stime;
   int sdelay;
-  UFO(float x,float y, float vx, float vy)
+  UFO(float x,float y, float vx, float vy,PImage t)
   {
     pos = new PVector(x,y);
     vel = new PVector(vx,vy);
@@ -14,13 +14,12 @@ class UFO extends Enemy
     stime = 0;
     sdelay = 1000;
     u = true;
+    tex = t;
   }
   @Override
   void display()
   {
-    stroke(255,127.5,0);
-    fill(0,0,255);
-    rect(pos.x,pos.y,size.x,size.y);
+    image(tex,pos.x,pos.y,size.x,size.y);
   }
   @Override
   void move()

@@ -7,21 +7,31 @@ class Player
   int shotwait;
   int score;
   int lives;
-  Player(float x, float y)
+  boolean shield;
+  PImage tex;
+  Player(float x, float y, PImage t)
   {
     pos = new PVector(x,y);
-    size = new PVector(50,50);
+    size = new PVector(42,75);
     speed = 4;
     shotwait = 250;
     shottime = -shotwait;
     score = 0;
-    lives = 3;
+    lives = 5;
+    tex = t;
+    shield = false;
   }
   void display()
   {
-    stroke(255,0,0);
-    fill(0,255,0);
-    rect(pos.x,pos.y,size.x,size.y);
+//    stroke(255,0,0);
+//    fill(0,255,0);
+//    rect(pos.x,pos.y,size.x,size.y);
+    if(shield)
+    {
+      tint(127.5,255,127.5);
+    }
+    image(tex,pos.x,pos.y,size.x,size.y);
+    noTint();
   }
   void move()
   {
@@ -84,7 +94,14 @@ class Player
     boolean t = false;
     if(abs(pos.x-e.pos.x) <=(size.x+e.size.x)/2 && abs(pos.y-e.pos.y) <=(size.y+e.size.y)/2)
     {
-      lives--;
+      if(shield)
+      {
+        shield = false;
+      }
+      else
+      {
+        lives--;
+      }
       t = true;
     }
     return t;
@@ -101,7 +118,14 @@ class Player
     {
       if(abs(pos.x-b.pos.x) <=(size.x+b.size.x)/2 && abs(pos.y-b.pos.y) <=(size.y+b.size.y)/2)
       {
-        lives--;
+        if(shield)
+        {
+          shield = false;
+        }
+        else
+        {
+          lives--;
+        }
         c = true;
       }
     }

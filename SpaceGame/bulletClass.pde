@@ -5,7 +5,8 @@ class Bullet
   PVector mov;
   float speed = 10;
   boolean friendly;
-  Bullet(PVector p,boolean f)
+  boolean miss;
+  Bullet(PVector p,boolean f,boolean mi)
   {
     pos = p;
     PVector m = new PVector(mouseX,mouseY);
@@ -15,6 +16,11 @@ class Bullet
     mov = m;
     size = new PVector(5,5);
     friendly = true;
+    miss = mi;
+    if(miss)
+    {
+      size.mult(2);
+    }
   }
   Bullet(PVector p, boolean f, PVector m)
   {
@@ -23,6 +29,7 @@ class Bullet
     m.mult(speed);
     mov = m;
     size = new PVector(5,5);
+    miss = false;
   }
   void move()
   {
