@@ -1,6 +1,7 @@
 int fnum = 1;
 int phase = 0;
 int maxNum = 20;
+int money = 0;
 Player p;
 int atime;
 int adelay;
@@ -388,6 +389,8 @@ void reset()
   atime = millis();
   udelay = 5000000;
   utime = millis();
+  money += score;
+  score = 0;
 }
 void mousePressed() {
   if (phase == 0) {
