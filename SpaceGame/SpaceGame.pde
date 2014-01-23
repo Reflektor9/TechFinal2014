@@ -54,6 +54,9 @@ void setup()
   bulletTex = loadImage("bullet.png");
   powerTex = new PImage[4];
   powerTex[0] = loadImage("heart.png");
+  powerTex[1] = loadImage("shield powerup.png");
+  powerTex[2] = loadImage("missile powerup.png");
+  powerTex[3] = loadImage("bomb powerup.png");
   //speed of rocket
   yspeed = new PVector(0, 0.75);
   //so that the rocket will accelerate 
@@ -190,7 +193,7 @@ void play()
       int rand = int(random(40));
       if (rand <4)
       {
-        powerups.add(new PowerUp(e.pos,rand));
+        powerups.add(new PowerUp(e.pos,rand,powerTex[rand]));
       }
       enemies.remove(i);
     }
