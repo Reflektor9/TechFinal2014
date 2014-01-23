@@ -54,7 +54,7 @@ Max worked on the framework for the powerups. Alex and Kathryn will work on impl
 
 PLAN - Final flowchart started. Kathryn adding comments to all of the code (Alex's, Luke's, and Max's), Max edits basic problems with the code, Luke documents bugs/glitches with the game
 
-WHAT WAS DONE - 
+WHAT WAS DONE - Final Flow chart practically finished, Comments to be finished, Bugs and glitches documented
 
 
 
