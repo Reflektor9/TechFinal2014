@@ -243,6 +243,7 @@ void store()
   textSize (22);
   text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
   //text explains the function of the store and how to use it
+  
 
 }
 void menu()
