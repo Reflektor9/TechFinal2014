@@ -1,17 +1,32 @@
+//variable declared for number of frames since launched
 int fnum = 1;
+//variable declared to establish which phase the game is in, and therefore what will be displayed, etc. Initially set to 0
 int phase = 0;
-int maxNum = 20;
+//variable declared for maximum number of enemies
+int maxNum = 15;
+//variable declared for money (which is attained through playing the game)
 int money = 0;
+//player created by using Player class
 Player p;
+//variable declared for asteroid spawning time 
 int atime;
+//variable declared for time between asteroid spawns 
 int adelay;
+//variable declared for ufo spawning time 
 int utime;
+//variable declared for time between ufo spawns
 int udelay;
+//variable declared for score within the game.
 int score = 0;
+//Array list declared for bullets
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+//Array list declared for enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+//Array list declared for power ups
 ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
+//variable declared for font (used for Menu Screen)
 PFont BankGothic;
+//variable declared for font (used for Start screen) 
 PFont OCR;
 //variable for rocket image
 PImage rocket;
@@ -25,23 +40,35 @@ int y = 525;
 PVector yacc;
 //declare array list for flames particles
 ArrayList<Particle> flame = new ArrayList<Particle>();
+//image for space window in store
 PImage spaceWindow;
+//image for the merchant 
 PImage merchant;
+//image for the asteroid texture
 PImage astTex;
+//image for the ufo texture
 PImage ufoTex;
+//boolean for if the spacebar is pressed in the frame before
 boolean spacePressed = false;
+//variable for the missile powerups
 int missiles;
+//variable for the bombs powerup
 int bombs;
+
 PImage bulletTex;
 PImage[] powerTex;
+
 void setup()
 {
   size(800, 800);
   rectMode(CENTER);
   BlackBox.init(this);
   textAlign(CENTER, CENTER);
-  p = new Player(width/2, height/2,rocket);
+  //New Player defined
+  p = new Player(width/2, height/2, rocket);
+  //value for time between asteroid spawning 
   adelay = 1000000;
+  //time 
   atime = 0;
   udelay = 5000000;
   utime = 0;
@@ -73,31 +100,38 @@ void draw()
   println(millis());
   if (phase == 0)
   {
+    //title screen if phase = 0
     title();
   }
   else if (phase == 1)
   {
+    //menu screen if phase = 1
     menu();
   }
   else if (phase == 2)
   {
+    //launch screen in phase = 2
     launch();
   }
   else if (phase == 3)
   {
+    //game play if phase = 3
     play();
   }
   else if (phase == 4)
   {
+    //store displayed if phase = 4
     store();
   }
 }
 
 void play()
 {
-
+  //time between spawns of asteroids
   adelay = 1000000/(fnum);
+  //time between spawns of ufos
   udelay = 5*adelay*int(abs(cos(fnum))+1);
+  //increasing the number of frames after launched 
   fnum++;
 
   background(0);
@@ -109,14 +143,14 @@ void play()
   {
     PVector po = new PVector(p.pos.x, p.pos.y);
     boolean m = false;
-    if(mouseButton==RIGHT && missiles >0)
+    if (mouseButton==RIGHT && missiles >0)
     {
       m = true;
       missiles--;
     }
-    bullets.add(new Bullet(po,true,m));
+    bullets.add(new Bullet(po, true, m));
   }
-  if(BlackBox.isKeyDown(BlackBox.VK_SPACE) && !spacePressed && bombs>0)
+  if (BlackBox.isKeyDown(BlackBox.VK_SPACE) && !spacePressed && bombs>0)
   {
     enemies.clear();
     bombs--;
@@ -135,11 +169,11 @@ void play()
       bullets.remove(i);
     }
   }
-  for(int i = powerups.size()-1;i>=0;i--)
+  for (int i = powerups.size()-1;i>=0;i--)
   {
     PowerUp pu = powerups.get(i);
     pu.display();
-    if(pu.playerCol(p))
+    if (pu.playerCol(p))
     {
       if (pu.type == 0)
       {
@@ -150,11 +184,12 @@ void play()
         p.shield = true;
       }
       else if (pu.type == 2)
-      {
+      {//increasing number of missiles
         missiles++;
       }
       else
       {
+        //increasing number of bombs
         bombs++;
       }
       powerups.remove(i);
@@ -244,15 +279,13 @@ void store()
   //Space merchant stands at the side
   textAlign (CENTER);
   fill (0);
-   if (mouseX >= 60 && mouseX <= 200 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
-     phase = 1;
-   }
+  if (mouseX >= 60 && mouseX <= 200 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
+    phase = 1;
+  }
   //clicking on the space window returns the player back to gameplay
   textSize (22);
   text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
   //text explains the function of the store and how to use it
-  
-
 }
 void menu()
 {
@@ -321,6 +354,7 @@ void launch()
       flame.remove(i);
     }
   }
+  //to ensure that everything is reset once the phase is over
   if (y <= -555) {
     phase = 3;
     reset();
@@ -329,7 +363,8 @@ void launch()
 }
 void asteroidSpawn()
 {
-  if (enemies.size() <20)
+  //if there are less than 
+  if (enemies.size() < maxNum)
   {
     if (millis()-atime >= adelay)
     {    
@@ -355,13 +390,13 @@ void asteroidSpawn()
       }
       PVector astVel = new PVector(p.pos.x, p.pos.y);
       astVel.sub(astPos);
-      enemies.add(new Asteroid(astPos.x, astPos.y, astVel.x, astVel.y,astTex));
+      enemies.add(new Asteroid(astPos.x, astPos.y, astVel.x, astVel.y, astTex));
     }
   }
 }
 void ufoSpawn()
 {
-  if (enemies.size() <20)
+  if (enemies.size() <maxNum)
   {
     if (millis()-utime >= udelay)
     {    
@@ -387,13 +422,13 @@ void ufoSpawn()
       }
       PVector uVel = new PVector(p.pos.x, p.pos.y);
       uVel.sub(uPos);
-      enemies.add(new UFO(uPos.x, uPos.y, uVel.x, uVel.y,ufoTex));
+      enemies.add(new UFO(uPos.x, uPos.y, uVel.x, uVel.y, ufoTex));
     }
   }
 }
 void reset()
 {
-  p = new Player(width/2, height/2,rocket);
+  p = new Player(width/2, height/2, rocket);
   adelay = 1000000;
   atime = millis();
   udelay = 5000000;
@@ -402,11 +437,14 @@ void reset()
   score = 0;
 }
 void mousePressed() {
+  //button that if clicked, will change the phase to one and bring the start screen to the menu screen
   if (phase == 0) {
     if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 13*height/24 + 15 && mouseY < 19*height/24 + 15) {
       phase = 1;
     }
   }
+
+  //button that if clicked, will change phase to 2 and therefore display the launch screen 
   else if (phase == 1) {
     if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 7*height/12 - 80 && mouseY < 9*height/12 - 80) {
       phase = 2;
@@ -419,5 +457,4 @@ void mousePressed() {
     }
   }
 }
-
 
