@@ -231,10 +231,12 @@ void play()
       if (e.u)
       {
         score += 20;
+        money += 20;
       }
       else
       {
         score += 10;
+        money += 10;
       }
       int rand = int(random(40));
       if (rand <4)
@@ -458,7 +460,6 @@ void reset()
   atime = millis();
   udelay = 5000000;
   utime = millis();
-  money += score;
   score = 0;
 }
 void mousePressed() {
