@@ -257,8 +257,22 @@ void store()
   background (255, 80, 80);
   rectMode (CORNER); 
   fill (150, 190, 230);
+    //Display counter of store
   rect (30, height-400, width-30, 350);
-  //Display counter of store
+  //Missle purchaser
+  fill(0);
+  rect (80, 450, 150, 150);
+  if (mouseX >= 80 && mouseX <= 230 && mouseY >= 450 && mouseY <= 600 && mousePressed) {
+   missiles++;
+   money-= 50;
+  }
+   //Bomb purchaser
+  fill(0);
+  rect (380, 450, 150, 150);
+  if (mouseX >= 380 && mouseX <= 530 && mouseY >= 450 && mouseY <= 600 && mousePressed) {
+   bombs++;
+   money-= 50;
+  }
   textSize (80);
   textAlign (CORNER);
   fill (15, 5, 210);
