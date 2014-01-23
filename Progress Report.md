@@ -45,4 +45,17 @@ PLAN - Combine all flowcharts (Alex and Kathryn), use predefined processes (poss
 
 WHAT WAS DONE - Game Description and Progress report split into two files.Flowcharts finalized and uplaoded. Some graphics added into the game! :)
 
+*January 20th,2014*
+
+Max worked on the framework for the powerups. Alex and Kathryn will work on implmenting them into the game
+
+*January 23th, 2014*
+
+
+PLAN - Final flowchart started. Kathryn adding comments to all of the code (Alex's, Luke's, and Max's), Max edits basic problems with the code, Luke documents bugs/glitches with the game
+
+WHAT WAS DONE - 
+
+
+
 
