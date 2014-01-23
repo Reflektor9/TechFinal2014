@@ -124,7 +124,7 @@ void draw()
 
 void play()
 {
-//time between spawns of asteroids
+  //time between spawns of asteroids
   adelay = 1000000/(fnum);
   //time between spawns of ufos
   udelay = 5*adelay*int(abs(cos(fnum))+1);
@@ -282,7 +282,6 @@ void store()
   textSize (22);
   text ("WELCOME TO THE STORE. CLICK ON WHAT YOU WANT TO BUY", width/2, height-10);
   //text explains the function of the store and how to use it
-
 }
 void menu()
 {
@@ -434,11 +433,14 @@ void reset()
   score = 0;
 }
 void mousePressed() {
+  //button that if clicked, will change the phase to one and bring the start screen to the menu screen
   if (phase == 0) {
     if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 13*height/24 + 15 && mouseY < 19*height/24 + 15) {
       phase = 1;
     }
   }
+
+  //button that if clicked, will change phase to 2 and therefore display the launch screen 
   else if (phase == 1) {
     if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 7*height/12 - 80 && mouseY < 9*height/12 - 80) {
       phase = 2;
