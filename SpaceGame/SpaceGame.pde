@@ -73,17 +73,23 @@ void setup()
   p = new Player(width/2, height/2, rocket);
   //value for time between asteroid spawning 
   adelay = 1000000;
-  //time 
+  //value for time it takes for asteroid to spawn
   atime = 0;
+  //value for time between ufo spawning
   udelay = 5000000;
+  //valye for time it takes for a ufo to spawn
   utime = 0;
   //rocket image
   rocket = loadImage("rocket1.png");
-  //earth image
+//image for the asteroid
   astTex = loadImage("asttex.png");
+  //image for the ufo
   ufoTex = loadImage("ufotex.png");
+  //earth image
   earth = loadImage("Earth1.png");
+  //image for the bullet
   bulletTex = loadImage("bullet.png");
+  //defining the images for each powerup and lived as well
   powerTex = new PImage[4];
   powerTex[0] = loadImage("heart.png");
   powerTex[1] = loadImage("shield powerup.png");
@@ -241,7 +247,7 @@ void play()
       int rand = int(random(40));
       if (rand <4)
       {
-        powerups.add(new PowerUp(e.pos,rand,powerTex[rand]));
+        powerups.add(new PowerUp(e.pos, rand, powerTex[rand]));
       }
       enemies.remove(i);
     }
@@ -265,22 +271,23 @@ void play()
   spacePressed = BlackBox.isKeyDown(BlackBox.VK_SPACE);
 }
 void store()
-{textSize (100);
+{
+  textSize (100);
   background (255, 80, 80);
   fill (0, 150, 0);
   text (money, width/2, 200);
   textSize (32);
   rectMode (CORNER); 
   fill (150, 190, 230);
-    //Display counter of store
+  //Display counter of store
   rect (30, height-400, width-30, 350);
   //Missle purchaser
   image (missilePic, 220, 550, 240, 200);
-   fill(0);
+  fill(0);
   rect (150, 635, 80, 50);
   fill (0, 150, 0);
-   text ("$50", 190, 670);
-   //Bomb purchaser
+  text ("$50", 190, 670);
+  //Bomb purchaser
   fill(0);
   image (bombPic, 500, 550, 240, 200);
   rect (455, 635, 100, 50);
@@ -484,14 +491,13 @@ void mousePressed() {
   }
   else if (phase == 4) {
     if (mouseX >= 150 && mouseX <= 230 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 50) {
-   missiles++;
-   money-= 50;
+      missiles++;
+      money-= 50;
+    }
+    if (mouseX >= 455 && mouseX <= 555 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 100) {
+      bombs++;
+      money-= 100;
+    }
   }
-   if (mouseX >= 455 && mouseX <= 555 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 100) {
-   bombs++;
-   money-= 100;
-  }
-  }
-  
-  }
+}
 
