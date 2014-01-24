@@ -260,6 +260,11 @@ void play()
     }
     if (!e.checkLive())
     {
+      int rand = int(random(20));
+      if (rand <4)
+      {
+        powerups.add(new PowerUp(e.pos, rand, powerTex[rand]));
+      }
       if (e.u)
       {
         score += 20;
@@ -269,11 +274,6 @@ void play()
       {
         score += 10;
         money += 10;
-      }
-      int rand = int(random(40));
-      if (rand <4)
-      {
-        powerups.add(new PowerUp(e.pos, rand, powerTex[rand]));
       }
       enemies.remove(i);
     }
@@ -299,6 +299,7 @@ void play()
     image(rocket,42*i+24,height-75/2,42,75);
   }
   textSize(32);
+  fill(255);
   text("Score: "+score,width/2,20);
   text("Money: "+money,width/2,50);
 }

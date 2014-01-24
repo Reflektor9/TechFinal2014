@@ -26,12 +26,13 @@ class Player
 //    stroke(255,0,0);
 //    fill(0,255,0);
 //    rect(pos.x,pos.y,size.x,size.y);
+    image(tex,pos.x,pos.y,size.x,size.y);
     if(shield)
     {
-      tint(127.5,255,127.5);
+      noStroke();
+      fill(0,255,0,75);
+      ellipse(pos.x-.5,pos.y,size.x,size.y-1);
     }
-    image(tex,pos.x,pos.y,size.x,size.y);
-    noTint();
   }
   void move()
   {
