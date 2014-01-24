@@ -149,7 +149,7 @@ void play()
   //time between spawns of asteroids
   adelay = 1000000/(fnum);
   //time between spawns of ufos
-  udelay = 5*adelay*int(abs(cos(fnum))+1);
+  udelay = 5*adelay*int(abs(cos(PI * fnum))+1);
   //increasing the number of frames after launched 
   fnum++;
 
@@ -285,6 +285,13 @@ void play()
   }
   println(score);
   spacePressed = BlackBox.isKeyDown(BlackBox.VK_SPACE);
+  for(int i = 0; i < p.lives;i++)
+  {
+    image(rocket,42*i+24,height-75/2,42,75);
+  }
+  textSize(32);
+  text("Score: "+score,width/2,20);
+  text("Money: "+money,width/2,50);
 }
 void store()
 {
