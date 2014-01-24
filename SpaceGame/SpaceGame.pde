@@ -302,6 +302,9 @@ void play()
   fill(255);
   text("Score: "+score,width/2,20);
   text("Money: "+money,width/2,50);
+  textSize(16);
+  text("Missiles: "+missiles,width - 60,height-30);
+  text("Bombs: "+bombs,width - 60,height-10);
 }
 void store()
 {
