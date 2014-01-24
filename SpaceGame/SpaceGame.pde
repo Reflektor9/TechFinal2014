@@ -177,7 +177,7 @@ void play()
       missiles--;
     }
     //adding new bullets to the game
-    bullets.add(new Bullet(po, true, m));
+    bullets.add(new Bullet(po, true, m,bulletTex));
   }
   //
   if (BlackBox.isKeyDown(BlackBox.VK_SPACE) && !spacePressed && bombs>0)
@@ -238,7 +238,7 @@ void play()
       PVector pos = new PVector(e.pos.x, e.pos.y);
       PVector v = new PVector(p.pos.x, p.pos.y);
       v.sub(pos);
-      bullets.add(new Bullet(pos, false, v));
+      bullets.add(new Bullet(pos, false, v,bulletTex));
     }
     for (int j = bullets.size()-1;j>=0;j--)
     {

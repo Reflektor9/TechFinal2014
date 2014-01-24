@@ -6,7 +6,8 @@ class Bullet
   float speed = 10;
   boolean friendly;
   boolean miss;
-  Bullet(PVector p,boolean f,boolean mi)
+  PImage tex;
+  Bullet(PVector p,boolean f,boolean mi,PImage te)
   {
     pos = p;
     PVector m = new PVector(mouseX,mouseY);
@@ -21,8 +22,9 @@ class Bullet
     {
       size.mult(2);
     }
+    tex = te;
   }
-  Bullet(PVector p, boolean f, PVector m)
+  Bullet(PVector p, boolean f, PVector m,PImage te)
   {
     pos = p;
     m.normalize();
@@ -30,6 +32,7 @@ class Bullet
     mov = m;
     size = new PVector(5,5);
     miss = false;
+    tex = te;
   }
   void move()
   {
@@ -39,15 +42,14 @@ class Bullet
   {
     if(friendly)
     {
-      stroke(255,0,0);
-      fill(0,255,0);
+      tint(127.5,255,127.5);
     }
     else
     {
-      stroke(0,255,0);
-      fill(255,0,0);
+      tint(255,127.5,127.5);
     }
-    ellipse(pos.x,pos.y,size.x,size.y);
+    image(tex,pos.x,pos.y,size.x,size.y);
+    noTint();
   }
   boolean offScreen()
   {
