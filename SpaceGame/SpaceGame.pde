@@ -116,7 +116,6 @@ void setup()
 }
 void draw()
 {  
-  println(millis());
   if (phase == 0)
   {
     //title screen if phase = 0
@@ -190,13 +189,16 @@ void play()
   for (int i = bullets.size()-1;i>=0;i--)
   {
     Bullet b = bullets.get(i);
+    //move and display b
     b.move();
     b.display();
+//    check collision of player and bullet
     if (p.bulletCol(b))
     {
       //the bullets are removed
       bullets.remove(i);
     }
+    //chck if bullet is onscreen
     if (b.offScreen())
     {
       bullets.remove(i);
@@ -205,17 +207,24 @@ void play()
   for (int i = powerups.size()-1;i>=0;i--)
   {
     PowerUp pu = powerups.get(i);
+//    display pu
     pu.display();
+    //check collision of player and powerup
     if (pu.playerCol(p))
     {
+      // if pu is a health powerup
       if (pu.type == 0)
       {
+//        refill player life
         p.lives = 5;
       }
+//      if pu is a shield
       else if (pu.type == 1)
       {
+//        give player shield
         p.shield = true;
       }
+      //if pu is a missile
       else if (pu.type == 2)
       {//increasing number of missiles
         missiles++;
@@ -225,6 +234,7 @@ void play()
         //increasing number of bombs
         bombs++;
       }
+//      remove pu
       powerups.remove(i);
     }
   }
@@ -283,7 +293,6 @@ void play()
     powerups.clear();
     phase = 1;
   }
-  println(score);
   spacePressed = BlackBox.isKeyDown(BlackBox.VK_SPACE);
   for(int i = 0; i < p.lives;i++)
   {
