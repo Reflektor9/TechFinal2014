@@ -81,7 +81,7 @@ void setup()
   utime = 0;
   //rocket image
   rocket = loadImage("rocket1.png");
-//image for the asteroid
+  //image for the asteroid
   astTex = loadImage("asttex.png");
   //image for the ufo
   ufoTex = loadImage("ufotex.png");
@@ -109,7 +109,9 @@ void setup()
   bombPic= loadImage ("bomb.png");
   //Missile picture
   missilePic= loadImage ("spaceMissile.png");
+  //number of bombs orignally set to zero
   bombs = 0;
+  //number of missiles orignally set to zero
   missiles = 0;
 }
 void draw()
@@ -152,24 +154,37 @@ void play()
   fnum++;
 
   background(0);
+  //to help the player move
   p.move();
+  //so that the player is displayed
   p.display();
+  //spawning an asteroid 
   asteroidSpawn();
+  //spawning a ufo
   ufoSpawn();
+  //if the player shoots and the mouse is pressed
   if (mousePressed&&p.shoot())
   {
+    //
     PVector po = new PVector(p.pos.x, p.pos.y);
     boolean m = false;
+    //if the right mouse button is pressed and there are more than 0 missiles 
     if (mouseButton==RIGHT && missiles >0)
     {
+      //
       m = true;
+      //number of missiles decrease
       missiles--;
     }
+    //adding new bullets to the game
     bullets.add(new Bullet(po, true, m));
   }
+  //
   if (BlackBox.isKeyDown(BlackBox.VK_SPACE) && !spacePressed && bombs>0)
   {
+    //clears enemies if the bomb goes off
     enemies.clear();
+    //bombs decrease in number
     bombs--;
   }
   for (int i = bullets.size()-1;i>=0;i--)
@@ -179,6 +194,7 @@ void play()
     b.display();
     if (p.bulletCol(b))
     {
+      //the bullets are removed
       bullets.remove(i);
     }
     if (b.offScreen())
@@ -428,12 +444,16 @@ void asteroidSpawn()
     }
   }
 }
+//in order to spawn the ufos
 void ufoSpawn()
 {
+  //number of enemies doesn't surpass the maximum limit
   if (enemies.size() <maxNum)
   {
+    //regulating how long they are in display 
     if (millis()-utime >= udelay)
     {    
+      //
       utime = millis();
       PVector uPos;
       uPos = new PVector(0, 0);
@@ -460,13 +480,20 @@ void ufoSpawn()
     }
   }
 }
+//in order to reset the game. All values set to original values
 void reset()
 {
+  //declaring new player once again
   p = new Player(width/2, height/2, rocket);
+  //asteroid time in between spawns
   adelay = 1000000;
+  //asteroid time to spawn
   atime = millis();
+  //ufo time in between spawns
   udelay = 5000000;
+  //ufo time to spawn
   utime = millis();
+  //score set to zero. (Money is kept however)
   score = 0;
 }
 void mousePressed() {
@@ -485,15 +512,19 @@ void mousePressed() {
       flame.clear();
       yspeed = new PVector(0, 0);
     }
+      //button that if clicked, will change phase to 4, and therefore display the store
     if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 7*height/12 + 90 && mouseY < 9*height/12 + 90) {
       phase = 4;
     }
   }
+    //if not phase 1, 2, or 3, therefore must be phase 4, the store
   else if (phase == 4) {
+    // to buy missiles, money decreases because the power up is bought, and missiles increase because that's what was bought
     if (mouseX >= 150 && mouseX <= 230 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 50) {
       missiles++;
       money-= 50;
     }
+     // to buy bombs, money decreases because the power up is bought and costs that much, and bombs increase because that's what was bought
     if (mouseX >= 455 && mouseX <= 555 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 100) {
       bombs++;
       money-= 100;
