@@ -334,7 +334,7 @@ void store()
   //window shows space outside, allowing you to return
   image (merchant, 725, 264);
   //Space merchant stands at the side
-  textAlign (CENTER);
+  textAlign (CENTER,CENTER);
   fill (0);
   if (mouseX >= 60 && mouseX <= 200 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
     phase = 1;
