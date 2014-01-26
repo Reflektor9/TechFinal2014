@@ -116,7 +116,6 @@ void setup()
 }
 void draw()
 {  
-  println(millis());
   if (phase == 0)
   {
     //title screen if phase = 0
@@ -149,7 +148,7 @@ void play()
   //time between spawns of asteroids
   adelay = 1000000/(fnum);
   //time between spawns of ufos
-  udelay = 5*adelay*int(abs(cos(fnum))+1);
+  udelay = 5*adelay*int(abs(cos(PI * fnum))+1);
   //increasing the number of frames after launched 
   fnum++;
 
@@ -177,7 +176,7 @@ void play()
       missiles--;
     }
     //adding new bullets to the game
-    bullets.add(new Bullet(po, true, m));
+    bullets.add(new Bullet(po, true, m,bulletTex));
   }
   //
   if (BlackBox.isKeyDown(BlackBox.VK_SPACE) && !spacePressed && bombs>0)
@@ -190,13 +189,16 @@ void play()
   for (int i = bullets.size()-1;i>=0;i--)
   {
     Bullet b = bullets.get(i);
+    //move and display b
     b.move();
     b.display();
+//    check collision of player and bullet
     if (p.bulletCol(b))
     {
       //the bullets are removed
       bullets.remove(i);
     }
+    //chck if bullet is onscreen
     if (b.offScreen())
     {
       bullets.remove(i);
@@ -205,17 +207,24 @@ void play()
   for (int i = powerups.size()-1;i>=0;i--)
   {
     PowerUp pu = powerups.get(i);
+//    display pu
     pu.display();
+    //check collision of player and powerup
     if (pu.playerCol(p))
     {
+      // if pu is a health powerup
       if (pu.type == 0)
       {
+//        refill player life
         p.lives = 5;
       }
+//      if pu is a shield
       else if (pu.type == 1)
       {
+//        give player shield
         p.shield = true;
       }
+      //if pu is a missile
       else if (pu.type == 2)
       {//increasing number of missiles
         missiles++;
@@ -225,7 +234,11 @@ void play()
         //increasing number of bombs
         bombs++;
       }
+<<<<<<< HEAD
       //removing powerups 
+=======
+//      remove pu
+>>>>>>> d5c62b5d0918b085cf99860e296157f7953108fe
       powerups.remove(i);
     }
   }
@@ -240,7 +253,7 @@ void play()
       PVector pos = new PVector(e.pos.x, e.pos.y);
       PVector v = new PVector(p.pos.x, p.pos.y);
       v.sub(pos);
-      bullets.add(new Bullet(pos, false, v));
+      bullets.add(new Bullet(pos, false, v,bulletTex));
     }
     for (int j = bullets.size()-1;j>=0;j--)
     {
@@ -252,6 +265,11 @@ void play()
     }
     if (!e.checkLive())
     {
+      int rand = int(random(20));
+      if (rand <4)
+      {
+        powerups.add(new PowerUp(e.pos, rand, powerTex[rand]));
+      }
       if (e.u)
       {
         score += 20;
@@ -261,11 +279,6 @@ void play()
       {
         score += 10;
         money += 10;
-      }
-      int rand = int(random(40));
-      if (rand <4)
-      {
-        powerups.add(new PowerUp(e.pos, rand, powerTex[rand]));
       }
       enemies.remove(i);
     }
@@ -285,8 +298,18 @@ void play()
     powerups.clear();
     phase = 1;
   }
-  println(score);
   spacePressed = BlackBox.isKeyDown(BlackBox.VK_SPACE);
+  for(int i = 0; i < p.lives;i++)
+  {
+    image(rocket,42*i+24,height-75/2,42,75);
+  }
+  textSize(32);
+  fill(255);
+  text("Score: "+score,width/2,20);
+  text("Money: "+money,width/2,50);
+  textSize(16);
+  text("Missiles: "+missiles,width - 60,height-30);
+  text("Bombs: "+bombs,width - 60,height-10);
 }
 void store()
 {
@@ -329,7 +352,7 @@ void store()
   //window shows space outside, allowing you to return
   image (merchant, 725, 264);
   //Space merchant stands at the side
-  textAlign (CENTER);
+  textAlign (CENTER,CENTER);
   fill (0);
   if (mouseX >= 60 && mouseX <= 200 && mouseY >= 145 && mouseY <= 255 && mousePressed) {
     phase = 1;
