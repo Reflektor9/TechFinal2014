@@ -1,13 +1,21 @@
 class Bullet
 {
+  //declaring pvector for position 
   PVector pos;
+  //declaring pvector for size 
   PVector size;
+  //declaring pvector for the movement 
   PVector mov;
+  //variable declared for the speed
   float speed = 10;
+  //
   boolean friendly;
+  //
   boolean miss;
+  //
   Bullet(PVector p,boolean f,boolean mi)
   {
+    //defining the position of the bullet
     pos = p;
     PVector m = new PVector(mouseX,mouseY);
     m.sub(p);
@@ -44,7 +52,9 @@ class Bullet
     }
     else
     {
+      //
       stroke(0,255,0);
+      //filling it with red
       fill(255,0,0);
     }
     ellipse(pos.x,pos.y,size.x,size.y);

@@ -225,9 +225,11 @@ void play()
         //increasing number of bombs
         bombs++;
       }
+      //removing powerups 
       powerups.remove(i);
     }
   }
+  //
   for (int i = enemies.size()-1;i>=0;i--)
   {
     Enemy e = enemies.get(i);
@@ -411,17 +413,23 @@ void launch()
     fnum = 1;
   }
 }
+//to spawn the asteroids
 void asteroidSpawn()
 {
-  //if there are less than 
+  //if there are less than the maximum number of asteroids/enemies
   if (enemies.size() < maxNum)
   {
+    //controlling the timing of asteroids spawning
     if (millis()-atime >= adelay)
     {    
+      //asteroid time
       atime = millis();
+      //pvector for the position of the asteroids
       PVector astPos;
+      //"original" or "initial" position of the asteroid
       astPos = new PVector(0, 0);
       int side = int(random(0, 4));
+      //depending on the value of size, the position of the asteroid is chosen randomly 
       if (side==0)
       {
         astPos= new PVector(-25, random(-25, height+25));
@@ -453,11 +461,15 @@ void ufoSpawn()
     //regulating how long they are in display 
     if (millis()-utime >= udelay)
     {    
-      //
+      //time for the ufo
       utime = millis();
+      //pvector for the position of the ufo
       PVector uPos;
+      //declaring properties
       uPos = new PVector(0, 0);
+      //variable that varies where the ufo enters
       int side = int(random(0, 4));
+      //all positions are random (as seen in each individual side
       if (side==0)
       {
         uPos= new PVector(-25, random(-25, height+25));
@@ -474,8 +486,11 @@ void ufoSpawn()
       {
         uPos= new PVector(random(-25, width+25), height + 25);
       }
+      //ufo velocity defined as a pvector
       PVector uVel = new PVector(p.pos.x, p.pos.y);
+      //subtracting the position of the ufo from the velocity 
       uVel.sub(uPos);
+      //adding to the enemies
       enemies.add(new UFO(uPos.x, uPos.y, uVel.x, uVel.y, ufoTex));
     }
   }
@@ -512,19 +527,19 @@ void mousePressed() {
       flame.clear();
       yspeed = new PVector(0, 0);
     }
-      //button that if clicked, will change phase to 4, and therefore display the store
+    //button that if clicked, will change phase to 4, and therefore display the store
     if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > 7*height/12 + 90 && mouseY < 9*height/12 + 90) {
       phase = 4;
     }
   }
-    //if not phase 1, 2, or 3, therefore must be phase 4, the store
+  //if not phase 1, 2, or 3, therefore must be phase 4, the store
   else if (phase == 4) {
     // to buy missiles, money decreases because the power up is bought, and missiles increase because that's what was bought
     if (mouseX >= 150 && mouseX <= 230 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 50) {
       missiles++;
       money-= 50;
     }
-     // to buy bombs, money decreases because the power up is bought and costs that much, and bombs increase because that's what was bought
+    // to buy bombs, money decreases because the power up is bought and costs that much, and bombs increase because that's what was bought
     if (mouseX >= 455 && mouseX <= 555 && mouseY >= 635 && mouseY <= 685 && mousePressed && money >= 100) {
       bombs++;
       money-= 100;
