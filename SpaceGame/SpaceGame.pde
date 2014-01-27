@@ -240,64 +240,75 @@ void play()
   }
   for (int i = enemies.size()-1;i>=0;i--)
   {
+    //for each enemy
     Enemy e = enemies.get(i);
+    //move and display the enemy
     e.move();
     e.display();
+    //check if it is shooting
     if (e.shoot())
-    {
+    {//add new bullet at enemy moving toward player
       PVector pos = new PVector(e.pos.x, e.pos.y);
       PVector v = new PVector(p.pos.x, p.pos.y);
       v.sub(pos);
       bullets.add(new Bullet(pos, false, v,bulletTex));
     }
     for (int j = bullets.size()-1;j>=0;j--)
-    {
+    {//for each bullet
       Bullet b = bullets.get(j);
       if (e.bulletCol(b))
-      {
+      {//if it has collided sith an enemy, remove it
         bullets.remove(j);
       }
     }
     if (!e.checkLive())
-    {
+    {//if enemy has no health
       int rand = int(random(20));
+      //ransdom chance of spawning a powerup
       if (rand <4)
-      {
+      {//if random is less than 4, add new powerup with type random
         powerups.add(new PowerUp(e.pos, rand, powerTex[rand]));
       }
       if (e.u)
-      {
+      {//if it is a ufo, add 20 to money and score
         score += 20;
         money += 20;
       }
       else
-      {
+      {//if not, add 10 to money and score
         score += 10;
         money += 10;
       }
+      //remove enemy
       enemies.remove(i);
     }
     else if (e.offScreen())
     {
+      //if offscreen, remove enemy
       enemies.remove(i);
     }
     else if (p.enemyCol(e))
-    {
+    {//if enemy collides with player, remove enemy
       enemies.remove(i);
     }
   }
   if (!p.checkLives())
   {
+    // if player is out of lives, clear enemies, bulllets, and powerups
     bullets.clear();
     enemies.clear();
     powerups.clear();
+    //go to menu
     phase = 1;
   }
+  //set spacebar pressed for next frame
   spacePressed = BlackBox.isKeyDown(BlackBox.VK_SPACE);
+  //display one socket for each life
   for(int i = 0; i < p.lives;i++)
   {
     image(rocket,42*i+24,height-75/2,42,75);
   }
+  //display money, score, missiles,and bombs
   textSize(32);
   fill(255);
   text("Score: "+score,width/2,20);
@@ -433,31 +444,33 @@ void launch()
 }
 void asteroidSpawn()
 {
-  //if there are less than 
+  //if there are less than maxnum of enemies 
   if (enemies.size() < maxNum)
   {
     if (millis()-atime >= adelay)
-    {    
+    { //if adelay has passed, set asteroid spawn time
       atime = millis();
       PVector astPos;
       astPos = new PVector(0, 0);
+      //set random side
       int side = int(random(0, 4));
       if (side==0)
-      {
+      {//set astpos to random position on the left
         astPos= new PVector(-25, random(-25, height+25));
       }
       else if (side==1)
-      {
+      {//set astpos to random position on the top
         astPos= new PVector(random(-25, width+25), -25);
       }
       else if (side==2)
-      {
+      {//set astpos to random position on the right
         astPos= new PVector(width+25, random(-25, height+25));
       }
       else
-      {
+      {//set astpos to random position on the bottom
         astPos= new PVector(random(-25, width+25), height + 25);
       }
+      //add new asteroid at astpos with velocity toward player
       PVector astVel = new PVector(p.pos.x, p.pos.y);
       astVel.sub(astPos);
       enemies.add(new Asteroid(astPos.x, astPos.y, astVel.x, astVel.y, astTex));
@@ -473,25 +486,26 @@ void ufoSpawn()
     //regulating how long they are in display 
     if (millis()-utime >= udelay)
     {    
-      //
+      //if udelay has passed, set ufo spawn time
       utime = millis();
       PVector uPos;
       uPos = new PVector(0, 0);
+      //set random side
       int side = int(random(0, 4));
       if (side==0)
-      {
+      {//set upos to random position on the left
         uPos= new PVector(-25, random(-25, height+25));
       }
       else if (side==1)
-      {
+      {//set upos to random position on the top
         uPos= new PVector(random(-25, width+25), -25);
       }
       else if (side==2)
-      {
+      {//set upos to random position on the right
         uPos= new PVector(width+25, random(-25, height+25));
       }
       else
-      {
+      {//set upos to random position on the bottom
         uPos= new PVector(random(-25, width+25), height + 25);
       }
       PVector uVel = new PVector(p.pos.x, p.pos.y);
