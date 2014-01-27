@@ -64,7 +64,7 @@ class Player
     }
     if(BlackBox.isKeyDown(BlackBox.VK_W))
     {//if a is pressed subtract 1 from amt.y and pressed = true
-      amt.y -= 1
+      amt.y -= 1;
       pressed = true;
     }
     if(BlackBox.isKeyDown(BlackBox.VK_S))
