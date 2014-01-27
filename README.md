@@ -16,6 +16,7 @@ In order to buy anything from the store, you need money. At the store you can bu
 	By clicking “launch” you are sent off into space! Avoid the asteroids coming your way by using W, A, S, and D to move up, left, down, and right. Click the left mouse button to shoot and aim with the cursor.
 
 	Power ups will appear on the screen as you play. Collect them by moving over them. Powerups include:
+	- Lives: resets your life total to five
 	- Shield: protects you from one attack 
 	- Missile: can be shot and can kill an enemy with that one shot
 	- Bomb: will clear the screen of enemies
